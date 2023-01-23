@@ -1,0 +1,22 @@
+{
+  "name": "back-gerance-tizi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/med-choko/Gerance-Back.git"
+  },
+  "author": "Mohammed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/med-choko/Gerance-Back/issues"
+  },
+  "homepage": "https://github.com/med-choko/Gerance-Back#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
