@@ -26,6 +26,9 @@ mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 
 const port = process.env.PORT
 
+const moment = require('moment');
+moment().format(' Do MMMM YYYY');
+
 const methodOverride = require('method-override');
 const User = require('./Models/User');
 const Utilisateur = require('./Models/Utilisateur'); 
@@ -100,6 +103,49 @@ app.post('/api/login', function (req, res) {
     });
     
 
+const Telephone =require('./Models/Telephone');
+
+app.post('/api/telephones', function (req, res) {
+    const Data = new Telephone({
+        marque:req.body.marque,
+       modele:req.body.modele,
+        couleur:req.body.couleur,
+        description:req.body.description,
+        reference:req.body.reference
+    });
+        Data.save().then(() => {
+            console.log("Telephone saved !");
+res.redirect("http://localhost:3000/") ;
+        }).catch(err=>{
+            console.log(err);
+        })
+
+        });
+        
+
+app.get("/allphones",function(req,res){
+Telephone.find().then(data=>{
+res.json({data:data});
+
+}).catch(err=>{
+    console.log(err);
+})
+
+
+}
+);
+
+app.get("/onephone/:reference",function(req,res){
+Telephone.findOne({
+reference:req.params.reference
+}).then(data=>{
+    res.json({data:data});
+}).catch(err=>{
+    console.log(err);
+});
+
+
+});
 
 
 
